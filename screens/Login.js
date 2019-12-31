@@ -1,8 +1,15 @@
 import React from 'react';
 import { View, Text, StyleSheet, TextInput, Button, TouchableOpacity, Alert } from 'react-native';
+import {createAppContainer} from 'react-navigation';
+import {createStackNavigator} from 'react-navigation-stack';
+class Login extends React.Component {
+    static navigationOptions = {
+        //To hide the ActionBar/NavigationBar
+        header: null,
+    };
 
-export default class Login extends React.Component {
     render() {
+        const {navigate} = this.props.navigation;
         return (
             <View style={style.container}>
                 <Text style={style.hello}>Xin chào !</Text>
@@ -16,6 +23,7 @@ export default class Login extends React.Component {
 
                 </TextInput>
                 <TouchableOpacity
+                    onPress={() => navigate('Main')}
                     style={style.button}
                 >
                     <Text style={[style.text,style.opacity]}>ĐĂNG NHẬP</Text>
@@ -60,6 +68,8 @@ export default class Login extends React.Component {
         );
     }
 }
+
+export default Login;
 
 const style = StyleSheet.create({
     container: {
